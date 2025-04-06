@@ -1,23 +1,25 @@
 # Stage 1: Build the application
-FROM maven:3.8.6-eclipse-temurin-21 AS build
+FROM maven:3.9.9-eclipse-temurin-17 AS build
 
 WORKDIR /app
 
-# Copy the pom.xml and src/ to the container
+# Copy the pom.xml and download dependencies
 COPY pom.xml .
-COPY src /app/src
+RUN mvn dependency:go-offline
 
-# Run Maven to build the application and produce the jar file
-RUN mvn clean package -DskipTests
+# Copy the source code
+COPY src ./src
 
-# Stage 2: Create the final image
-FROM eclipse-temurin:21-jdk
+# Package the application
+RUN mvn package -DskipTests
+
+# Stage 2: Run the application
+FROM eclipse-temurin:17-jdk
 
 WORKDIR /app
 
-# Copy the JAR file from the previous stage
-COPY --from=build /app/target/currency-converter-app-0.0.1-SNAPSHOT.jar /app/currency-converter-app.jar
+# Copy the built jar from the build stage
+COPY --from=build /app/target/*.jar app.jar
 
-# Run the JAR file when the container starts
-ENTRYPOINT ["java", "-jar", "currency-converter-app.jar"]
-EXPOSE 8080
+# Run the application
+CMD ["java", "-jar", "app.jar"]
