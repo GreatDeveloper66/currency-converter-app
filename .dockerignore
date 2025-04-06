@@ -33,3 +33,6 @@ nbdist
 ### VS Code ###
 **\.vscode
 fly.toml
+
+# Ensure this is included for the build
+!target/*.jar
