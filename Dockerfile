@@ -1,5 +1,5 @@
 # Stage 1: Build the application
-FROM maven:3.8.6-openjdk-21-slim AS build
+FROM maven:3.8.6-openjdk-11-slim AS build
 
 WORKDIR /app
 
@@ -11,7 +11,7 @@ COPY src /app/src
 RUN mvn clean package -DskipTests
 
 # Stage 2: Create the final image
-FROM eclipse-temurin:21-jdk-slim
+FROM eclipse-temurin:11-jdk-slim
 
 WORKDIR /app
 
@@ -21,4 +21,3 @@ COPY --from=build /app/target/currency-converter-app-0.0.1-SNAPSHOT.jar /app/cur
 # Run the JAR file when the container starts
 ENTRYPOINT ["java", "-jar", "currency-converter-app.jar"]
 EXPOSE 8080
-# Note: The application will run on port 8080 by default. You can change this in the application.properties file if needed.
