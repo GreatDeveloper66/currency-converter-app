@@ -1,24 +1,15 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOM8d7xj2z5l5e5e5e5e5e5e5e5e5e5e5e5e5" crossorigin="anonymous">
-        <title>
-            Greeting Page
-        </title>
-    </head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.0/css/bootstrap.min.css}">
+    <title>Currency Converter</title>
+</head>
 <body>
-
-    <div class="container">
-        <header>
-            <h1>Welcome to the Greeting Page</h1>
-        </header>
-        <main>
-            <section>
-                <h2>Greeting</h2>
-                <p>Hello, <span th:text="${name}">User</span>! </p>
-            </section>
-        </main>
-    </div>
+    <h1>Greetings!</h1>
+    <p>This is a simple skeleton app to test the deployment.</p>
+    <script th:src="@{/webjars/bootstrap/5.3.0/js/bootstrap.bundle.min.js}"></script>
 </body>
+<!-- This is a simple skeleton app to test the deployment. -->
+</html>
