@@ -1,35 +1,29 @@
-<!-- This is the main layout template for the Currency Converter application -->
-<!-- It uses Thymeleaf for templating and Bootstrap for styling -->
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title th:insert="${title}">Currency Converter App</title>
-    <!-- Include Bootstrap CSS -->
+    <title th:text="${title}">Currency Converter App</title>
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.0/css/bootstrap.min.css}">
 </head>
 <body>
-    <!-- Header Section -->
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="#">Currency Converter</a>
         </nav>
     </header>
 
-    <!-- Main Content Section -->
     <main>
         <div class="container mt-4">
-            <div th:insert="~{::content}"></div>
+            <!-- This is where the content of other pages will be inserted -->
+            <div th:replace="${content}"></div>
         </div>
     </main>
 
-    <!-- Footer Section -->
     <footer class="text-center mt-4">
         <p>&copy; 2025 Currency Converter App</p>
     </footer>
 
-    <!-- Include Bootstrap JS -->
     <script th:src="@{/webjars/bootstrap/5.3.0/js/bootstrap.bundle.min.js}"></script>
 </body>
 </html>
