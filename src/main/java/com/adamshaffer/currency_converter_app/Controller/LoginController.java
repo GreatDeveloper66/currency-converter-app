@@ -1,10 +1,16 @@
 package com.adamshaffer.currency_converter_app.Controller;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.adamshaffer.currency_converter_app.Services.UserService;
+
 @Controller
 public class LoginController {
+    @Autowired
+    private UserService userService; // Assuming UserService is the correct dependency
+    
     @GetMapping("/login")
     public String login(Model model) {
         model.addAttribute("title", "Login Page");
