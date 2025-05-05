@@ -5,7 +5,6 @@ public class FrankfurterLive {
     private String targetCurrency;
     private double exchangeRate;
     private String lastUpdated;
-    //private String APIKey = "82a38ef789c99f68d9109caa20c96e20";
     private String FrankfurterOpenSourceAPI = "https://api.frankfurter.dev/";
 
     public FrankfurterLive(String baseCurrency, String targetCurrency, double exchangeRate, String lastUpdated) {
